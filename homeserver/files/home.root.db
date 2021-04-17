@@ -1,0 +1,14 @@
+$TTL 3600
+$ORIGIN home.root.
+
+@       IN SOA server.home.root. admin.home.root (
+                20210413                ; serial number
+                3600                    ; refresh period
+                600                     ; retry period
+                604000                  ; expire time
+                1800 )                  ; negative ttl
+
+@       IN NS  server.home.root.
+
+server  IN A   192.168.0.106
+printer IN A   192.168.0.201

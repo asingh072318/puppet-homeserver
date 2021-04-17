@@ -10,4 +10,7 @@ class homeserver {
 
   #install and configure postgresql
   include homeserver::postgresql
+
+  #install and configure bind dns server
+  include homeserver::bind
 }
