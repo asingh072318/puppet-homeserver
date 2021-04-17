@@ -4,7 +4,6 @@
 # 1. install postgresql server
 # 2. create superuser testuser
 # 3. create database testuser and owner testuser
-# 4. create table users public_id,username,password,admin,default_db,created_on
 # @example
 #   include homeserver::postgresql
 class homeserver::postgresql {
