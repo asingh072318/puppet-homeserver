@@ -31,10 +31,29 @@ class homeserver::dbapi {
     dev                  => 'present',
     python_pyvenvs       => {"/home/scripts/dbapi/apienv" => {"version" => "system"}},
   }
-  -> exec {'pip install requirements':
+  -> exec { 'pip install requirements':
     path      => '/usr/local/bin/:/bin:/usr/sbin',
     command   => '/home/scripts/dbapi/apienv/bin/pip install -r /home/scripts/dbapi/requirements.txt',
     logoutput => true,
     provider  => 'shell',
+  }
+  # create dbapi service in systemd
+  -> file { '/etc/systemd/system/dbapi.service':
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    content => file("homeserver/dbapi.service")
+  }
+  # enable and start dbapi service
+  -> service { 'dbapi':
+    ensure => running,
+    enable => true,
+  }
+  # open port 8001
+  -> firewalld_port { 'open port 8001':
+    ensure   => present,
+    zone     => 'public',
+    port     => 8001,
+    protocol => 'tcp',
   }
 }

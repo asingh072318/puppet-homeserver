@@ -1,0 +1,11 @@
+[Unit]
+Description = service for dbapi - postgres handling api
+After = network.target
+
+[Service]
+WorkingDirectory = /home/scripts/dbapi
+Environment = /home/scripts/dbapi/apienv/bin/
+ExecStart = /home/scripts/dbapi/apienv/bin/gunicorn --bind 0.0.0.0:8001 wsgi:application
+
+[Install]
+WantedBy = multi-user.target
