@@ -8,9 +8,12 @@ class homeserver {
   # install puppet_vim
   include homeserver::vim
 
-  #install and configure postgresql
+  # install and configure postgresql
   include homeserver::postgresql
 
-  #install and configure bind dns server
+  # install and configure bind dns server
   include homeserver::bind
+
+  # clone and deploy dbapi
+  include homeserver::dbapi
 }
