@@ -16,4 +16,7 @@ class homeserver {
 
   # clone and deploy dbapi
   include homeserver::dbapi
+
+  # install and setup printer driver
+  include homeserver::printer
 }
