@@ -1,0 +1,6 @@
+---
+homeserver::dbapi::packages:
+  - gcc
+  - libpq-dev
+  - libhdf5-dev
+  - libssl-dev

@@ -1,0 +1,6 @@
+---
+homeserver::dbapi::packages:
+  - gcc
+  - openssl-devel
+  - bzip2-devel
+  - libffi-devel

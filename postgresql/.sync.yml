@@ -1,0 +1,60 @@
+---
+".gitlab-ci.yml":
+  delete: true
+.puppet-lint.rc:
+  extra_disabled_lint_checks:
+    - 140chars-check
+appveyor.yml:
+  delete: true
+
+Gemfile:
+  optional:
+    ":development":
+    - gem: github_changelog_generator
+Rakefile:
+  changelog_user: puppetlabs
+  changelog_max_issues: 500
+spec/spec_helper.rb:
+  mock_with: ":rspec"
+  coverage_report: true
+.github/workflows/nightly.yml:
+  unmanaged: false
+  exclude_platforms:
+    - Scientific-6
+    - Scientific-7
+    - Debian-9
+    - Debian-10
+    - Debian-11
+    - SLES-12
+    - SLES-15
+    - Ubuntu-14.04
+    - Ubuntu-16.04
+    - Ubuntu-18.04
+    - Ubuntu-20.04
+.github/workflows/pr_test.yml:
+  unmanaged: false
+  exclude_platforms:
+    - Scientific-6
+    - Scientific-7
+    - Debian-9
+    - Debian-10
+    - Debian-11
+    - SLES-12
+    - SLES-15
+    - Ubuntu-14.04
+    - Ubuntu-16.04
+    - Ubuntu-18.04
+    - Ubuntu-20.04
+.gitpod.Dockerfile:
+  unmanaged: false
+.gitpod.yml:
+  unmanaged: false
+.github/workflows/auto_release.yml:
+  unmanaged: false
+.github/workflows/spec.yml:
+  checks: 'syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop'
+  unmanaged: false
+.github/workflows/release.yml:
+  unmanaged: false
+.travis.yml:
+  delete: true

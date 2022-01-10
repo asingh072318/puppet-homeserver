@@ -4,7 +4,9 @@
 #
 # @example
 #   include homeserver
-class homeserver {
+class homeserver(
+  $packages      = lookup('homeserver::dbapi::packages')
+  ) {
   # install puppet_vim
   include homeserver::vim
 
@@ -12,11 +14,11 @@ class homeserver {
   include homeserver::postgresql
 
   # install and configure bind dns server
-  include homeserver::bind
+  # include homeserver::bind
 
   # clone and deploy dbapi
   include homeserver::dbapi
 
   # install and setup printer driver
-  include homeserver::printer
+  # include homeserver::printer
 }

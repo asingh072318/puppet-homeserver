@@ -5,9 +5,11 @@
 # @example
 #   include homeserver::dbapi
 # 
-class homeserver::dbapi {
+class homeserver::dbapi(
+  $packages,
+  ) {
+  include firewalld
   # handle prereq packages
-  $packages = [ 'gcc', 'openssl-devel', 'bzip2-devel', 'libffi-devel']
   package { $packages:
     ensure => installed,
   }
