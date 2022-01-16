@@ -4,7 +4,10 @@
 #
 # @example
 #   include homeserver::printer
-class homeserver::printer {
+class homeserver::printer(
+  $printer_name = 'mx490',
+  $printer_hash = lookup('homeserver::printer::printer_hash'),
+  ) {
   # install prerequisite packages
   $packages = ['cups','cups-devel', 'rpm-build', 'autoconf', 'libtool', 'automake', 'gcc-c++', 'glib2-devel', 'libusbx-devel', 'libxml2-devel']
   package { $packages:
@@ -41,7 +44,7 @@ class homeserver::printer {
 
   # add printer and accept,enable
   -> exec {'Add printer.home.root':
-    command   => 'lpadmin -p home_printer -v socket://printer.home.root -P /usr/share/cups/model/canone470.ppd',
+    command   => "lpadmin -p home_printer -v socket://printer.home.root -P ${printer_hash[$printer_name]}",
     logoutput => true,
     provider  => 'shell',
     unless    => 'lpstat -v home_printer',
@@ -56,7 +59,6 @@ class homeserver::printer {
     logoutput => true,
     provider  => 'shell',
   }
-  
   # remove driver archive
   -> file { '/tmp/cnijfilter2-source-5.40-1.tar.gz':
     ensure => 'absent',

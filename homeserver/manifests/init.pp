@@ -14,11 +14,13 @@ class homeserver(
   include homeserver::postgresql
 
   # install and configure bind dns server
-  # include homeserver::bind
+  include homeserver::bind
 
   # clone and deploy dbapi
-  include homeserver::dbapi
+  # include homeserver::dbapi
 
   # install and setup printer driver
-  # include homeserver::printer
+  class {'homeserver::printer':
+    printer_name => 'mx490'
+  }
 }

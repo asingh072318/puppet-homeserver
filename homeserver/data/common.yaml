@@ -1,1 +1,4 @@
---- {}
+---
+homeserver::printer::printer_hash:
+  "mx490" : "/usr/share/cups/model/canonmx490.ppd"
+  "e470" : "/usr/share/cups/model/canone470.ppd"

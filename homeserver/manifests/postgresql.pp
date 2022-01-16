@@ -14,8 +14,8 @@ class homeserver::postgresql {
   # create role testuser with password defined in hiera, make user superuser
   -> postgresql::server::role { 'testuser':
     password_hash => postgresql::postgresql_password('testuser', 'testdbpasstest'),
-    superuser     => true, 
-  }
+    superuser     => true,
+    }
 
   # create db testuser with owner testuser
   -> postgresql::server::database { 'testuser':
