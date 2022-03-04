@@ -8,19 +8,20 @@ class homeserver(
   $packages      = lookup('homeserver::dbapi::packages')
   ) {
   # install puppet_vim
-  include homeserver::vim
+  # include homeserver::vim
 
   # install and configure postgresql
-  include homeserver::postgresql
+  # include homeserver::postgresql
 
   # install and configure bind dns server
-  include homeserver::bind
+  # include homeserver::bind
 
   # clone and deploy dbapi
   # include homeserver::dbapi
 
   # install and setup printer driver
-  class {'homeserver::printer':
-    printer_name => 'mx490'
-  }
+  # class {'homeserver::printer':
+  #   printer_name => 'mx490'
+  # }
+  include homeserver::nfs
 }

@@ -43,24 +43,24 @@ class homeserver::printer(
   }
 
   # add printer and accept,enable
-  -> exec {'Add printer.home.root':
+  exec {'Add printer.home.root':
     command   => "lpadmin -p home_printer -v socket://printer.home.root -P ${printer_hash[$printer_name]}",
     logoutput => true,
     provider  => 'shell',
     unless    => 'lpstat -v home_printer',
   }
-  -> exec { 'accept printer':
+  exec { 'accept printer':
     command   => '/sbin/cupsaccept home_printer',
     logoutput => true,
     provider  => 'shell',
   }
-  -> exec { 'enable printer':
+  exec { 'enable printer':
     command   => '/sbin/cupsenable home_printer',
     logoutput => true,
     provider  => 'shell',
   }
   # remove driver archive
-  -> file { '/tmp/cnijfilter2-source-5.40-1.tar.gz':
+  file { '/tmp/cnijfilter2-source-5.40-1.tar.gz':
     ensure => 'absent',
   }
 

@@ -11,4 +11,4 @@ $ORIGIN home.root.
 @       IN NS  server.home.root.
 
 server  IN A   192.168.86.100
-printer IN A   192.168.86.99
+printer IN A   192.168.86.56
