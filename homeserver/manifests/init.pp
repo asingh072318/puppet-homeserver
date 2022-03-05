@@ -21,7 +21,11 @@ class homeserver(
 
   # install and setup printer driver
   # class {'homeserver::printer':
-  #   printer_name => 'mx490'
+    # printer_name => 'mx490'
   # }
-  include homeserver::nfs
+  # include homeserver::nfs
+  class {'nvm':
+    user         => '7A13eW1',
+    install_node => '14.18.1',
+  }
 }
